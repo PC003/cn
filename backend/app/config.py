@@ -1,4 +1,4 @@
-PROJECT_NAME = "Netflix Streaming Transport Lab"
+PROJECT_NAME = "StreamLens"
 PROJECT_SUBTITLE = (
     "An Interactive Simulation of TCP, UDP, Adaptive Bitrate Streaming, "
     "Buffering and Network Conditions"
@@ -6,21 +6,25 @@ PROJECT_SUBTITLE = (
 REPORT_TITLE = "Transport Layer in Practice — How Netflix Streams Video Using TCP and UDP"
 
 # Current development phase, surfaced to the frontend so Home can show live
-# project status. Update this as later reviews land.
-CURRENT_PHASE = "Review 1 — Architecture, scaffolding and conceptual pages"
-REVIEW_MILESTONE = 1
+# project status.
+CURRENT_PHASE = "Review 3 — Simulation engine, controlled experiments and dashboard"
+REVIEW_MILESTONE = 3
 
-# Simulation modules that exist as files (per the planned structure) but whose
-# logic is implemented in later reviews. Listed here purely for transparency
-# on the /api/info endpoint.
+# Simulation modules (all implemented), listed for transparency on /api/info.
 PLANNED_SIMULATION_MODULES = [
-    "network.py — bandwidth/latency/jitter/loss generator",
-    "packet.py — packet data model",
-    "tcp_model.py — simplified TCP-like transport",
-    "udp_model.py — simplified UDP-like transport",
-    "congestion.py — simplified congestion window model",
-    "buffer.py — playback buffer simulation",
-    "abr.py — throughput-based / buffer-based / hybrid ABR",
-    "qoe.py — simplified QoE scoring",
-    "experiment.py — experiment controller orchestrating the above",
+    "config.py — validated, unit-explicit simulation configuration",
+    "network.py — seeded bandwidth traces, impairments, loss/RTT/jitter",
+    "packet.py — packet data model (optional per-packet trace)",
+    "transport.py — shared delivery record and transport interface",
+    "tcp_model.py — simplified TCP-like transport (cwnd, RTO, head-of-line blocking)",
+    "udp_model.py — simplified UDP-like transport (datagrams, reordering, app recovery)",
+    "quic_model.py — simplified QUIC-like transport (per-stream ordering, 1-RTT setup)",
+    "congestion.py — simplified AIMD congestion window model",
+    "buffer.py — playback buffer, startup and rebuffering",
+    "abr.py — throughput-based and buffer-based (BBA-style) ABR",
+    "qoe.py — transparent, configurable QoE score",
+    "experiment.py — one seeded streaming session",
+    "lab.py — trials, comparisons, sweeps, sensitivity, Mathis validation",
+    "stats.py — means, t-intervals, Mathis formula",
+    "export.py — JSON / CSV export",
 ]

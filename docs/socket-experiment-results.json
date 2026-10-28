@@ -1,0 +1,92 @@
+{
+  "kind": "REAL socket measurements on loopback (not simulator output)",
+  "timestamp_utc": "2026-10-12T14:33:03.245203+00:00",
+  "host": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "python": "3.12.14"
+  },
+  "wireshark_capture_performed": false,
+  "parameters": {
+    "bytes": 50000000,
+    "datagrams": 50000,
+    "payload": 1200,
+    "rcvbuf": 65536,
+    "repeats": 3,
+    "tcp_port": 5001,
+    "udp_port": 5002,
+    "out": "../docs/socket-experiment-results.json"
+  },
+  "tcp": [
+    {
+      "protocol": "tcp",
+      "bytes_requested": 50000000,
+      "bytes_received": 50000000,
+      "connect_time_ms": 1.1193,
+      "time_to_first_byte_ms": 1.2018,
+      "total_time_s": 0.01762,
+      "goodput_mbps": 22698.36,
+      "complete": true
+    },
+    {
+      "protocol": "tcp",
+      "bytes_requested": 50000000,
+      "bytes_received": 50000000,
+      "connect_time_ms": 0.1008,
+      "time_to_first_byte_ms": 0.1545,
+      "total_time_s": 0.01025,
+      "goodput_mbps": 39036.45,
+      "complete": true
+    },
+    {
+      "protocol": "tcp",
+      "bytes_requested": 50000000,
+      "bytes_received": 50000000,
+      "connect_time_ms": 0.0719,
+      "time_to_first_byte_ms": 0.1041,
+      "total_time_s": 0.00566,
+      "goodput_mbps": 70645.38,
+      "complete": true
+    }
+  ],
+  "udp": [
+    {
+      "protocol": "udp",
+      "datagrams_sent": 50000,
+      "datagrams_received": 50000,
+      "datagrams_lost": 0,
+      "loss_fraction": 0.0,
+      "reordered": 0,
+      "duplicates": 0,
+      "send_time_s": 0.36218,
+      "receiver_rcvbuf_bytes": 65536,
+      "retransmissions": 0,
+      "note": "UDP never retransmits; any loss here is kernel socket-buffer overflow on loopback (sender faster than the receiver thread), not network loss."
+    },
+    {
+      "protocol": "udp",
+      "datagrams_sent": 50000,
+      "datagrams_received": 50000,
+      "datagrams_lost": 0,
+      "loss_fraction": 0.0,
+      "reordered": 0,
+      "duplicates": 0,
+      "send_time_s": 0.37838,
+      "receiver_rcvbuf_bytes": 65536,
+      "retransmissions": 0,
+      "note": "UDP never retransmits; any loss here is kernel socket-buffer overflow on loopback (sender faster than the receiver thread), not network loss."
+    },
+    {
+      "protocol": "udp",
+      "datagrams_sent": 50000,
+      "datagrams_received": 50000,
+      "datagrams_lost": 0,
+      "loss_fraction": 0.0,
+      "reordered": 0,
+      "duplicates": 0,
+      "send_time_s": 0.36628,
+      "receiver_rcvbuf_bytes": 65536,
+      "retransmissions": 0,
+      "note": "UDP never retransmits; any loss here is kernel socket-buffer overflow on loopback (sender faster than the receiver thread), not network loss."
+    }
+  ]
+}

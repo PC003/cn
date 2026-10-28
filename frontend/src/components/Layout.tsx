@@ -1,5 +1,6 @@
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { Moon, Sun, Network, PanelLeftClose, PanelLeftOpen } from "lucide-react";
+import { Moon, Sun, PanelLeftClose, PanelLeftOpen } from "lucide-react";
+import { Logo } from "./Logo";
 import { useState } from "react";
 import { NAV_ITEMS } from "../types/nav";
 import { useTheme } from "../hooks/useTheme";
@@ -20,11 +21,11 @@ export function Layout() {
         }`}
       >
         <div className="flex items-center gap-2 border-b border-border px-4 py-4">
-          <Network className="h-6 w-6 shrink-0 text-primary" />
+          <Logo className="h-8 w-8 shrink-0" />
           {!collapsed && (
             <div className="min-w-0">
-              <p className="truncate text-sm font-bold leading-tight">Netflix Streaming</p>
-              <p className="truncate text-xs leading-tight text-text-muted">Transport Lab</p>
+              <p className="truncate text-sm font-bold leading-tight">StreamLens</p>
+              <p className="truncate text-xs leading-tight text-text-muted">Transport &amp; QoE lab</p>
             </div>
           )}
         </div>
@@ -74,7 +75,7 @@ export function Layout() {
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="flex items-center justify-between border-b border-border bg-surface px-4 py-3 md:px-8">
           <div className="flex items-center gap-2 md:hidden">
-            <Network className="h-5 w-5 shrink-0 text-primary" />
+            <Logo className="h-6 w-6 shrink-0" />
             <select
               className="rounded-md border border-border bg-surface px-2 py-1 text-xs"
               value={location.pathname}
@@ -122,7 +123,6 @@ function StatusPillInlineLegend() {
   return (
     <span className="ml-2 inline-flex items-center gap-1 align-middle">
       <StatusPill status="ready" />
-      <StatusPill status="planned" />
     </span>
   );
 }

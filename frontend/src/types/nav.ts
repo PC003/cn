@@ -4,7 +4,7 @@ export interface NavItem {
   path: string;
   label: string;
   status: PageStatus;
-  /** Which project review this page is targeted for. */
+  /** Which project review this page was delivered in. */
   reviewMilestone: 1 | 2 | 3;
   description: string;
 }
@@ -18,86 +18,58 @@ export const NAV_ITEMS: NavItem[] = [
     description: "Project overview and engineering problem statement.",
   },
   {
-    path: "/architecture",
-    label: "Architecture",
-    status: "ready",
-    reviewMilestone: 1,
-    description: "How the simulator will be structured, end to end.",
-  },
-  {
-    path: "/report-mapping",
-    label: "Report → Project",
-    status: "ready",
-    reviewMilestone: 1,
-    description: "Maps each report section to a concrete project feature.",
-  },
-  {
-    path: "/packet-capture-guide",
-    label: "Packet Capture Guide",
-    status: "ready",
-    reviewMilestone: 1,
-    description: "How to independently verify TCP/UDP behaviour with Wireshark.",
-  },
-  {
-    path: "/viva",
-    label: "Viva Mode",
-    status: "ready",
-    reviewMilestone: 1,
-    description: "Anticipated viva questions with grounded answers.",
-  },
-  {
-    path: "/about",
-    label: "About / Assumptions",
-    status: "ready",
-    reviewMilestone: 1,
-    description: "Scope, assumptions, and limitations of the simulation.",
-  },
-  {
     path: "/experiment-lab",
     label: "Experiment Lab",
-    status: "planned",
+    status: "ready",
     reviewMilestone: 3,
-    description: "Configure network conditions and run a full streaming experiment.",
+    description: "Configure network conditions, run a streaming session or repeated trials.",
   },
   {
     path: "/tcp-vs-udp",
     label: "TCP vs UDP",
-    status: "planned",
+    status: "ready",
     reviewMilestone: 3,
     description: "Controlled side-by-side comparison under identical conditions.",
   },
   {
     path: "/abr-lab",
     label: "ABR Lab",
-    status: "planned",
+    status: "ready",
     reviewMilestone: 3,
-    description: "Throughput-based, buffer-based and hybrid ABR algorithms.",
+    description: "Throughput-based and buffer-based ABR, with every decision logged.",
   },
   {
     path: "/live-simulation",
     label: "Live Simulation",
-    status: "planned",
+    status: "ready",
     reviewMilestone: 3,
-    description: "Animated, real-time playback of an experiment with fault injection.",
+    description: "Real-time video player with dynamic network sliders, Wi-Fi switching, and ABR buffer mechanics.",
+  },
+  {
+    path: "/validation",
+    label: "Model Validation",
+    status: "ready",
+    reviewMilestone: 3,
+    description: "Mathis comparison, loss × RTT sweep and repeated trials with confidence intervals.",
   },
   {
     path: "/results",
     label: "Results",
-    status: "planned",
+    status: "ready",
     reviewMilestone: 2,
     description: "Metrics, QoE breakdown, and graphs for a completed experiment.",
   },
   {
     path: "/what-if",
     label: "What-If Analysis",
-    status: "planned",
+    status: "ready",
     reviewMilestone: 3,
     description: "Sweep one parameter and observe its effect on outcomes.",
   },
   {
     path: "/experiment-history",
     label: "Experiment History",
-    status: "planned",
+    status: "ready",
     reviewMilestone: 2,
     description: "Stored experiments with view, duplicate and compare actions.",
   },

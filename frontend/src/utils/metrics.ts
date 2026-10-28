@@ -1,0 +1,15 @@
+export const METRIC_LABELS: Record<string, { label: string; digits: number }> = {
+  qoe: { label: "QoE score (0–100)", digits: 2 },
+  avg_bitrate_mbps: { label: "Average bitrate (Mbps)", digits: 3 },
+  startup_delay_s: { label: "Startup delay (s)", digits: 2 },
+  rebuffer_s: { label: "Rebuffering time (s)", digits: 2 },
+  rebuffer_events: { label: "Rebuffer events", digits: 2 },
+  bitrate_switches: { label: "Bitrate switches", digits: 2 },
+  mean_throughput_mbps: { label: "Mean segment goodput (Mbps)", digits: 3 },
+  mean_download_s: { label: "Mean segment download (s)", digits: 3 },
+  retransmissions: { label: "Retransmissions", digits: 1 },
+  timeouts: { label: "Timeouts", digits: 1 },
+  hol_blocked_packet_s: { label: "HOL blocking (packet·s)", digits: 2 },
+  incomplete_segments: { label: "Incomplete segments", digits: 2 },
+  mean_delivered_fraction: { label: "Mean delivered fraction", digits: 4 },
+};

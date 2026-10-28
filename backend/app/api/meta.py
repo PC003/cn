@@ -8,7 +8,7 @@ router = APIRouter(tags=["meta"])
 
 @router.get("/health", response_model=HealthResponse)
 def health() -> HealthResponse:
-    return HealthResponse(status="ok", service="netflix-transport-lab-api")
+    return HealthResponse(status="ok", service="streamlens-api")
 
 
 @router.get("/info", response_model=ProjectInfoResponse)

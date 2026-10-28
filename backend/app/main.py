@@ -2,12 +2,12 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app import config
-from app.api import meta
+from app.api import meta, simulation
 
 app = FastAPI(
     title=config.PROJECT_NAME,
     description=config.PROJECT_SUBTITLE,
-    version="0.1.0",
+    version="0.3.0",
 )
 
 app.add_middleware(
@@ -19,3 +19,4 @@ app.add_middleware(
 )
 
 app.include_router(meta.router, prefix="/api")
+app.include_router(simulation.router, prefix="/api")

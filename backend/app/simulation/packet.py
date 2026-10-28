@@ -1,10 +1,11 @@
 """
-Packet data model — planned for Review 2.
+Per-packet record used for the optional packet trace.
 
-Fields (per project spec section 48): packet_id, segment_id,
-sequence_number, size, send_time, arrival_time, lost, retransmitted,
-delivered, in_order. Shared by both the TCP-like and UDP-like transport
-models so their behaviour can be compared under identical packet traces.
+The transports simulate packets in vectorised bulk (a 6 Mbps segment is ~2,000
+packets), so individual ``Packet`` records are only materialised for the first
+``packet_trace_limit`` packets of segment 0 (``SimulationConfig``). The same
+record type is produced by the TCP-like, UDP-like and QUIC-like models so their
+behaviour can be compared packet by packet.
 """
 
 from dataclasses import dataclass

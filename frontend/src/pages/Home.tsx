@@ -1,11 +1,18 @@
 import { Link } from "react-router-dom";
-import { Play, GitCompare, SlidersHorizontal, BarChart3, ArrowRight } from "lucide-react";
+import { Play, GitCompare, SlidersHorizontal, BarChart3, ArrowRight, Tv } from "lucide-react";
 import { Card } from "../components/Card";
 import { Callout } from "../components/Callout";
 import { FlowDiagram } from "../components/FlowDiagram";
 import { useBackendStatus } from "../hooks/useBackendStatus";
 
 const ACTIONS = [
+  {
+    to: "/live-simulation",
+    icon: Tv,
+    title: "Live Video Simulation",
+    description: "Watch a running video adapt as you switch from Good Wi-Fi to Bad Wi-Fi in real-time.",
+    badge: "Interactive",
+  },
   {
     to: "/experiment-lab",
     icon: Play,
@@ -39,10 +46,10 @@ export default function Home() {
     <div className="space-y-10">
       <section>
         <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
-          Computer Networks Case Study &mdash; Interactive Prototype
+          Computer Networks Case Study &mdash; Interactive Simulation
         </p>
         <h1 className="max-w-3xl text-3xl font-bold tracking-tight md:text-4xl">
-          Netflix Streaming Transport Lab
+          StreamLens
         </h1>
         <p className="mt-3 max-w-2xl text-base text-text-muted md:text-lg">
           Explore how transport protocols, network conditions, adaptive bitrate selection and
@@ -58,13 +65,22 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         {ACTIONS.map((action) => (
           <Link key={action.to} to={action.to}>
-            <Card className="group h-full transition-colors hover:border-primary/50">
-              <action.icon className="h-5 w-5 text-primary" />
-              <h3 className="mt-3 font-semibold">{action.title}</h3>
-              <p className="mt-1 text-sm text-text-muted">{action.description}</p>
+            <Card className="group h-full transition-colors hover:border-primary/50 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between">
+                  <action.icon className="h-5 w-5 text-primary" />
+                  {"badge" in action && action.badge && (
+                    <span className="rounded bg-primary/10 px-1.5 py-0.5 text-[10px] font-bold text-primary uppercase tracking-wider">
+                      {action.badge}
+                    </span>
+                  )}
+                </div>
+                <h3 className="mt-3 font-semibold">{action.title}</h3>
+                <p className="mt-1 text-sm text-text-muted">{action.description}</p>
+              </div>
               <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
                 Open <ArrowRight className="h-3 w-3" />
               </span>
@@ -125,27 +141,19 @@ export default function Home() {
               { label: "Playback" },
             ]}
           />
-          <p className="mt-4 text-xs text-text-muted">
-            See the full <Link to="/architecture" className="text-accent underline">Architecture</Link> page
-            for the component-by-component breakdown, and{" "}
-            <Link to="/report-mapping" className="text-accent underline">Report &rarr; Project</Link> for
-            how each report section maps to a concrete feature.
-          </p>
         </Card>
       </section>
 
       <Callout variant="simulation" title="Educational simulation">
         Every visualization in this project is labelled as a simplified model, simulation, or
-        educational approximation where it goes beyond what the report documents. See{" "}
-        <Link to="/about" className="text-accent underline">About / Assumptions</Link> for the full list
-        of limitations.
+        educational approximation where it goes beyond what the report documents. It is not a reproduction of Netflix's production systems.
       </Callout>
 
       <section className="text-xs text-text-muted">
         {info ? (
           <p>
             Backend reachable &mdash; phase reported: <span className="font-medium text-text">{info.phase}</span>{" "}
-            (targeting Review {info.review_milestone}).
+            (Review {info.review_milestone}).
           </p>
         ) : (
           <p>Backend not reachable yet &mdash; start it to see live project status here.</p>
